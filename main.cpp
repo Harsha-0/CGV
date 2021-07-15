@@ -10,6 +10,17 @@ void keyboard(unsigned char key,int x,int y);
 bool vis = false;
 static int aniflag=0;
 
+void drawText(float x,float y,char *string)
+{
+ glColor3f(0,0,0);
+char *c;
+glRasterPos2f(x,y);
+for (c=string;*c != '\0'; c++)
+{
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+}
+}
+
 void menu (int n){
  if(n==1)
     aniflag =1;
@@ -55,6 +66,8 @@ GLint x =420,x1=420,en=0,y=100,y11=200,ya=50,xa=10,y2=150,x2=230;
 void Man(){
 
 glClear(GL_COLOR_BUFFER_BIT);
+
+
     glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
 
     //background-light brown
@@ -758,7 +771,7 @@ glEnd();
    glVertex2i(x2+3,y2+32);
    glVertex2i(x2-4,y2+32);
  glEnd();
-
+drawText( 20,460,"Kannada Rajyothsava Flag Hoisiting");
 glutKeyboardFunc(keyboard);
 glutSwapBuffers();
 }
