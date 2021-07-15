@@ -1,10 +1,12 @@
-#include<GLUT/glut.h>
+#include<GL/glut.h>
 #include<stdlib.h>
 #include<math.h>
 #include<stdio.h>
 void Man();
 void reshape(int w, int h);
 void timer(int);
+void keyboard(unsigned char key,int x,int y);
+
 bool vis = false;
 static int aniflag=0;
 
@@ -210,7 +212,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(230, 280);     //  so that the normal (front-face) is facing you
     glVertex2f(260, 280);
     glVertex2f(260, 200);
-    //window4-small window0.6/0.2/0.1 ----------------------------m-i-d-d-l-e-d-o-o-r------------
+    //window4-small window0.6/0.2/0.1
     glColor3f(0.8, 0.6, 0.2); // brown
     glVertex2f(235, 203);     // Define vertices in counter-clockwise (CCW) order
     glVertex2f(235, 270);     //  so that the normal (front-face) is facing you
@@ -252,27 +254,6 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(355, 270);     //  so that the normal (front-face) is facing you
     glVertex2f(375, 270);
     glVertex2f(375, 230);
-    glEnd();
-    //------treessssss
-   glBegin(GL_TRIANGLES);
-    //tree1
-    glColor3f(0.6,0.8,0.196078);
-    glVertex2f(30,180);
-    glVertex2f(45,300);
-    glVertex2f(60,180);
-    //tree2
-    glColor3f(0.6,0.8,0.196078);
-    glVertex2f(10,250);
-    glVertex2f(25,370);
-    glVertex2f(40,250);
-    //tree3
-    glColor3f(0.6,0.8,0.196078);
-    glVertex2f(400,250);
-    glVertex2f(445,370);
-    glVertex2f(490,250);
-    glEnd();
-    
-    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
     //pillar1
     glColor3f(0.6, 0.2, 0.0); // brown and the base for the buildings
     glVertex2f(70,200);
@@ -381,11 +362,27 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(424,115);
     glVertex2f(436,75);//RB
 
-   
+    glColor3f(0.7, 0.3, 0.1); // brown
+    glVertex2f(230, 220);     // Define vertices in counter-clockwise (CCW) order
+    glVertex2f(230, 280);     //  so that the normal (front-face) is facing you
+    glVertex2f(260, 280);
+    glVertex2f(260, 220);
 
    glEnd();
- 
-    glBegin(GL_TRIANGLES);// Each set of 3 vertices form a triangle
+
+   glBegin(GL_TRIANGLES);          // Each set of 3 vertices form a triangle
+
+    //tree1
+    glColor3f(0.6,0.8,0.196078);
+    glVertex2f(30,180);
+    glVertex2f(45,300);
+    glVertex2f(60,180);
+    //tree2
+    glColor3f(0.6,0.8,0.196078);
+    glVertex2f(10,250);
+    glVertex2f(25,370);
+    glVertex2f(40,250);
+
     glColor3f(0.7, 0.3, 0.1); // brown triangle
       glVertex2f(70, 400);
       glVertex2f(100, 400);
@@ -404,7 +401,7 @@ glClear(GL_COLOR_BUFFER_BIT);
    glEnd();
 
 
- //------------------------------------------FLAGbase------------------------------------------------/
+ /*------------------------------------------FLAGbase------------------------------------------------*/
  glColor3f(0.3f,0.3f,0.3f);   //stepbase
  glBegin(GL_QUADS);
    glVertex2i(50,90);
@@ -436,7 +433,7 @@ glEnd();
    glVertex2i(74,y+70);
 glEnd();
   }
-//------------------------------------------FLAG--------------------------------------------------/
+/*------------------------------------------FLAG--------------------------------------------------*/
  GLdouble xf[4] ,t,yf1[4],yf2[4],yf3[4];
  GLdouble xt[100],y1t[100],y2t[100],yt[100];
  xf[0]=83; xf[1]=105 ; xf[2] =110; xf[3]=130-xa;
@@ -446,14 +443,10 @@ glEnd();
  int i,c;
  if(reach){
  for(i=0,t=0,c=0;i<100,t<1;t=t+0.02,i++){
-//     xt[i]=pow(1-t,3);xf[0]+3*t*pow(1-t,2)*xf[1]+3*t*t*(1-t)*xf[2]+pow(t,3)*xf[3];
-//     yt[i] = pow(1-t,3);yf1[0]+3*t*pow(1-t,2)*yf1[1]+3*pow(t,2)*(1-t)*yf1[2]+pow(t,3)*yf1[3];
-//     y1t[i] = pow(1-t,3);yf2[0]+3*t*pow(1-t,2)*yf2[1]+3*pow(t,2)*(1-t)*yf2[2]+pow(t,3)*yf2[3];
-//     y2t[i] = pow(1-t,3);yf3[0]+3*t*pow(1-t,2)*yf3[1]+3*pow(t,2)*(1-t)*yf3[2]+pow(t,3)*yf3[3];
-     xt[i]=pow(1-t,3)*xf[0]+3*t*pow(1-t,2)*xf[1]+3*t*t*(1-t)*xf[2]+pow(t,3)*xf[3];
-        yt[i] = pow(1-t,3)*yf1[0]+3*t*pow(1-t,2)*yf1[1]+3*pow(t,2)*(1-t)*yf1[2]+pow(t,3)*yf1[3];
-        y1t[i] = pow(1-t,3)*yf2[0]+3*t*pow(1-t,2)*yf2[1]+3*pow(t,2)*(1-t)*yf2[2]+pow(t,3)*yf2[3];
-        y2t[i] = pow(1-t,3)*yf3[0]+3*t*pow(1-t,2)*yf3[1]+3*pow(t,2)*(1-t)*yf3[2]+pow(t,3)*yf3[3];
+   xt[i]=pow(1-t,3)*xf[0]+3*t*pow(1-t,2)*xf[1]+3*t*t*(1-t)*xf[2]+pow(t,3)*xf[3];
+   yt[i] = pow(1-t,3)*yf1[0]+3*t*pow(1-t,2)*yf1[1]+3*pow(t,2)*(1-t)*yf1[2]+pow(t,3)*yf1[3];
+   y1t[i] = pow(1-t,3)*yf2[0]+3*t*pow(1-t,2)*yf2[1]+3*pow(t,2)*(1-t)*yf2[2]+pow(t,3)*yf2[3];
+   y2t[i] = pow(1-t,3)*yf3[0]+3*t*pow(1-t,2)*yf3[1]+3*pow(t,2)*(1-t)*yf3[2]+pow(t,3)*yf3[3];
    c++;
    }
    glColor3f(1.0f,1.0f,0.0f);
@@ -475,7 +468,7 @@ glEnd();
 
  }
 
- //----------------------------------------------MAN2-------------------------------/
+ /*----------------------------------------------MAN2-------------------------------*/
   glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x1,y11-90);
@@ -669,7 +662,7 @@ glEnd();
    glVertex2i(x-4,224);
  glEnd();
  }
- //----------------------------------------------MAN2-------------------------------/
+ /*----------------------------------------------MAN2-------------------------------*/
   glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x2,y2-90);
@@ -765,6 +758,8 @@ glEnd();
    glVertex2i(x2+3,y2+32);
    glVertex2i(x2-4,y2+32);
  glEnd();
+
+glutKeyboardFunc(keyboard);
 glutSwapBuffers();
 }
 
@@ -813,4 +808,12 @@ void timer (int)
     if(xa==8&&!flag)
         flag=true;
     }
+}
+void keyboard(unsigned char key,int x,int y)
+{
+    if(key == 'e')
+        exit(0);
+    if (key== 'f')
+        glutFullScreen();
+
 }
