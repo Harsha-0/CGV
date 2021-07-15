@@ -1,4 +1,4 @@
-#include<GL/glut.h>
+#include<GLUT/glut.h>
 #include<stdlib.h>
 #include<math.h>
 #include<stdio.h>
@@ -17,7 +17,7 @@ char *c;
 glRasterPos2f(x,y);
 for (c=string;*c != '\0'; c++)
 {
-	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
 }
 }
 
@@ -267,6 +267,42 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(355, 270);     //  so that the normal (front-face) is facing you
     glVertex2f(375, 270);
     glVertex2f(375, 230);
+    glEnd();
+    //------treessssss
+       glBegin(GL_TRIANGLES);
+        //tree1
+        glColor3f(0.6,0.8,0.196078);
+        glVertex2f(30,180);
+        glVertex2f(45,300);
+        glVertex2f(60,180);
+        //tree2
+        glColor3f(0.6,0.8,0.196078);
+        glVertex2f(10,250);
+        glVertex2f(25,370);
+        glVertex2f(40,250);
+        //tree3
+        glColor3f(0.6,0.8,0.196078);
+        glVertex2f(400,250);
+        glVertex2f(420,370);
+        glVertex2f(440,250);
+        glEnd();
+        
+        glBegin(GL_TRIANGLES);
+        //tree4
+        glColor3f(0.6,0.8,0.196078);
+        glVertex2f(430,220);
+        glVertex2f(450,340);
+        glVertex2f(470,220);
+        glEnd();
+        glBegin(GL_TRIANGLES);
+        //tree5
+        glColor3f(0.6,0.8,0.196078);
+        glVertex2f(390,190);
+        glVertex2f(410,300);
+        glVertex2f(430,190);
+        glEnd();
+    
+    glBegin(GL_QUADS);
     //pillar1
     glColor3f(0.6, 0.2, 0.0); // brown and the base for the buildings
     glVertex2f(70,200);
@@ -375,12 +411,6 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(424,115);
     glVertex2f(436,75);//RB
 
-    glColor3f(0.7, 0.3, 0.1); // brown
-    glVertex2f(230, 220);     // Define vertices in counter-clockwise (CCW) order
-    glVertex2f(230, 280);     //  so that the normal (front-face) is facing you
-    glVertex2f(260, 280);
-    glVertex2f(260, 220);
-
    glEnd();
 
    glBegin(GL_TRIANGLES);          // Each set of 3 vertices form a triangle
@@ -405,13 +435,19 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(390, 400);
     glVertex2f(420, 400);
     glVertex2f(405,430);
-
+ 
     //dome
-    glColor3f(0.7, 0.3, 0.1); // brown triangle
-    glVertex2f(160,350);
-    glVertex2f(330,350);
-    glVertex2f(245,400);
-   glEnd();
+        glColor3f(0.7, 0.3, 0.1); // brown triangle
+        glVertex2f(160,350);
+        glVertex2f(330,350);
+        glVertex2f(245,400);
+     // triangle inside triangle
+        glColor3f(0.8,0.5,0.1); // brown triangle
+        glVertex2f(182,358);
+        glVertex2f(245,393);//middle
+        glVertex2f(308,358);
+       glEnd();
+ 
 
 
  /*------------------------------------------FLAGbase------------------------------------------------*/
@@ -482,7 +518,8 @@ glEnd();
  }
 
  /*----------------------------------------------MAN2-------------------------------*/
-  glColor3f(1.0f,0.0f,0.0f); //leg
+  
+    glColor3f(0.9,0.7,0.6); //leg
   glBegin(GL_QUADS);
    glVertex2i(x1,y11-90);
    glVertex2i(x1+10,y11-90);
@@ -521,7 +558,7 @@ glEnd();
    glVertex2i(x1,y11);
  glEnd();
 
- glColor3f(1.0f,0.3f,0.5f); //hand
+    glColor3f(0.9,0.7,0.6); //hand
   glBegin(GL_QUADS);
    glVertex2i(x1,y11-30);
    glVertex2i(x1+10,y11-30);
@@ -529,7 +566,7 @@ glEnd();
    glVertex2i(x1,y11-10);
  glEnd();
 
- glColor3f(1.0f,0.3f,0.5f); //hand
+    glColor3f(0.9,0.7,0.6); //hand
   glBegin(GL_QUADS);
    glVertex2i(x1,y11-40);
    glVertex2i(x1+10,y11-40);
@@ -545,7 +582,7 @@ glEnd();
    glVertex2i(x1-2,y11-30);
  glEnd();*/
 
- glColor3f(1.0f,0.3f,0.5f); //neck
+    glColor3f(0.9,0.7,0.6); //neck
   glBegin(GL_QUADS);
    glVertex2i(x1,y11);
    glVertex2i(x1+10,y11);
@@ -570,7 +607,7 @@ glEnd();
  glEnd();
 
 
-  glColor3f(1.0f,0.3f,0.5f); //face
+    glColor3f(0.9,0.7,0.6); //face
   glBegin(GL_QUADS);
    glVertex2i(x1-4,y11+5);
    glVertex2i(x1+3,y11+5);
@@ -676,7 +713,7 @@ glEnd();
  glEnd();
  }
  /*----------------------------------------------MAN2-------------------------------*/
-  glColor3f(1.0f,0.0f,0.0f); //leg
+  glColor3f(0.9,0.7,0.6); //leg
   glBegin(GL_QUADS);
    glVertex2i(x2,y2-90);
    glVertex2i(x2+10,y2-90);
@@ -686,11 +723,15 @@ glEnd();
 
  glColor3f(0.0f,0.0f,0.0f); //shorts
   glBegin(GL_QUADS);
-   glVertex2i(x2-10,y2-60);
-   glVertex2i(x2+10,y2-60);
+   glVertex2i(x2-3,y2-88);
+   glVertex2i(x2+10,y2-88);
    glVertex2i(x2+10,y2-30);
-   glVertex2i(x2-10,y2-30);
+   glVertex2i(x2-3,y2-30);
+
  glEnd();
+    
+
+    
   glColor3f(1.5f,0.5f,0.0f);    //shoe
   glBegin(GL_QUADS);
    glVertex2i(x2-10,y2-100);
@@ -699,23 +740,23 @@ glEnd();
    glVertex2i(x2-10,y2-90);
  glEnd();
 
- glColor3f(0.0f,0.3f,0.5f); //body
+    glColor3f(0.0f,0.3f,0.5f); //body-td
   glBegin(GL_QUADS);
-   glVertex2i(x2-10,y2-30);
+   glVertex2i(x2-3,y2-30);
    glVertex2i(x2+10,y2-30);
    glVertex2i(x2+10,y2-10);
-   glVertex2i(x2-10,y2-10);
+   glVertex2i(x2-3,y2-10);
  glEnd();
 
- glColor3f(0.0f,0.3f,0.5f); //body
+    glColor3f(0.0f,0.3f,0.5f); //body--top
   glBegin(GL_QUADS);
-   glVertex2i(x2-10,y2-10);
+   glVertex2i(x2-3,y2-10);
    glVertex2i(x2+10,y2-10);
    glVertex2i(x2+10,y2);
    glVertex2i(x2,y2);
  glEnd();
 
- glColor3f(1.0f,0.3f,0.5f); //hand
+    glColor3f(0.9,0.7,0.6); //hand
   glBegin(GL_QUADS);
    glVertex2i(x2,y2-30);
    glVertex2i(x2+10,y2-30);
@@ -723,7 +764,7 @@ glEnd();
    glVertex2i(x2,y2-10);
  glEnd();
 
- glColor3f(1.0f,0.3f,0.5f); //hand
+    glColor3f(0.9,0.7,0.6); //hand
   glBegin(GL_QUADS);
    glVertex2i(x2,y2-40);
    glVertex2i(x2+10,y2-40);
@@ -739,7 +780,7 @@ glEnd();
    glVertex2i(x2-2,y2-30);
  glEnd();*/
 
- glColor3f(1.0f,0.3f,0.5f); //hand
+    glColor3f(0.9,0.7,0.6); //hand
   glBegin(GL_QUADS);
    glVertex2i(x2,y2);
    glVertex2i(x2+10,y2);
@@ -764,14 +805,14 @@ glEnd();
  glEnd();
 
 
-  glColor3f(1.0f,0.3f,0.5f); //face
+    glColor3f(0.9,0.7,0.6); //face
   glBegin(GL_QUADS);
    glVertex2i(x2-4,y2+5);
    glVertex2i(x2+3,y2+5);
    glVertex2i(x2+3,y2+32);
    glVertex2i(x2-4,y2+32);
  glEnd();
-drawText( 20,460,"Kannada Rajyothsava Flag Hoisiting");
+drawText( 20,460,"KANNADA Rajyothsava FLAG HOISTING");
 glutKeyboardFunc(keyboard);
 glutSwapBuffers();
 }
