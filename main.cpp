@@ -815,5 +815,11 @@ void keyboard(unsigned char key,int x,int y)
         exit(0);
     if (key== 'f')
         glutFullScreen();
+    if (key == 32){
+     if(aniflag==0)
+        aniflag=1;
+      else
+        aniflag=0;
+    }
 
 }
