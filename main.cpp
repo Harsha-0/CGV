@@ -9,7 +9,7 @@ void keyboard(unsigned char key,int x,int y);
 
 bool vis = false;
 static int aniflag=0;
-
+GLint day=1;
 void drawText(float x,float y,char *string)
 {
  glColor3f(0,0,0);
@@ -33,7 +33,10 @@ void menu (int n){
 
 }
 void Myinit(){
+
  glClearColor(0.2,0.6,0.9,1);
+
+
  glMatrixMode(GL_PROJECTION);
  glLoadIdentity();
 
@@ -42,6 +45,8 @@ void Myinit(){
  glutAddMenuEntry("Stop",2);
   glutAddMenuEntry("exit",0);
   glutAttachMenu(GLUT_RIGHT_BUTTON);
+  glutPostRedisplay();
+
 }
 
 
@@ -60,7 +65,7 @@ int main(int argc, char** argv) {
    return 0;
 }
 bool pole = true,flag=true,reach=false;
-GLint x =420,x1=420,en=0,y=100,y11=200,ya=50,xa=10,y2=150,x2=230;
+GLint x =420,x1=420,en=0,y=100,y11=200,ya=50,xa=10,y2=150,x2=230,x21=180,y21=150;
 
 
 void Man(){
@@ -68,7 +73,7 @@ void Man(){
 glClear(GL_COLOR_BUFFER_BIT);
 
 
-    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
+    glBegin(GL_QUADS); // Each set of 4 vertices form a quad
 
     //background-light brown
     glColor3f(0.7,0.4,0.2) ; // light brown background1
@@ -577,6 +582,210 @@ glEnd();
    glVertex2i(x1+3,y11+32);
    glVertex2i(x1-4,y11+32);
  glEnd();
+ /*--------------------------------------------man3--------------------------------------------*/
+  glPopMatrix();
+
+	glPushMatrix();
+	glTranslated (15,80,0);
+    glColor3f(1.0f,0.0f,0.0f); //leg
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-90);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21,y21-60);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //shorts
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-60);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21-10,y21-30);
+ glEnd();
+  glColor3f(1.5f,0.5f,0.0f);    //shoe
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-100);
+   glVertex2i(x21+10,y21-100);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21-10,y21-90);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21-10,y21-10);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-10);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21,y21);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21,y21-10);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-40);
+   glVertex2i(x21+10,y21-40);
+   glVertex2i(x21+10,y21-20);
+   glVertex2i(x21,y21-20);
+ glEnd();
+
+ /*glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x2-2,y2-40);
+   glVertex2i(x2,y2-140);
+   glVertex2i(x2,y2-30);
+   glVertex2i(x2-2,y2-30);
+ glEnd();*/
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21,y21+5);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21+12,y21+30);
+   glVertex2i(x21+3,y21+30);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+30);
+   glVertex2i(x21+10,y21+30);
+   glVertex2i(x21+10,y21+34);
+   glVertex2i(x21-4,y21+34);
+ glEnd();
+
+
+  glColor3f(1.0f,0.3f,0.5f); //face
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+5);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+3,y21+32);
+   glVertex2i(x21-4,y21+32);
+ glEnd();
+ glPopMatrix();
+
+ /*--------------------------------------------man3--------------------------------------------*/
+  glPopMatrix();
+
+	glPushMatrix();
+	glTranslated (80,80,0);
+    glColor3f(1.0f,0.0f,0.0f); //leg
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-90);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21,y21-60);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //shorts
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-60);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21-10,y21-30);
+ glEnd();
+  glColor3f(1.5f,0.5f,0.0f);    //shoe
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-100);
+   glVertex2i(x21+10,y21-100);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21-10,y21-90);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21-10,y21-10);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-10);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21,y21);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21,y21-10);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-40);
+   glVertex2i(x21+10,y21-40);
+   glVertex2i(x21+10,y21-20);
+   glVertex2i(x21,y21-20);
+ glEnd();
+
+ /*glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x2-2,y2-40);
+   glVertex2i(x2,y2-140);
+   glVertex2i(x2,y2-30);
+   glVertex2i(x2-2,y2-30);
+ glEnd();*/
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21,y21+5);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21+12,y21+30);
+   glVertex2i(x21+3,y21+30);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+30);
+   glVertex2i(x21+10,y21+30);
+   glVertex2i(x21+10,y21+34);
+   glVertex2i(x21-4,y21+34);
+ glEnd();
+
+
+  glColor3f(1.0f,0.3f,0.5f); //face
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+5);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+3,y21+32);
+   glVertex2i(x21-4,y21+32);
+ glEnd();
+ glPopMatrix();
+
 
  /* -----------------------------------------MAINMAN1---------------------------------------------------*/
   if(!vis){
@@ -771,6 +980,208 @@ glEnd();
    glVertex2i(x2+3,y2+32);
    glVertex2i(x2-4,y2+32);
  glEnd();
+  /*--------------------------------------------man3--------------------------------------------*/
+  glPopMatrix();
+
+	glPushMatrix();
+	glTranslated (115,0,0);
+    glColor3f(1.0f,0.0f,0.0f); //leg
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-90);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21,y21-60);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //shorts
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-60);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21-10,y21-30);
+ glEnd();
+  glColor3f(1.5f,0.5f,0.0f);    //shoe
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-100);
+   glVertex2i(x21+10,y21-100);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21-10,y21-90);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21-10,y21-10);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-10);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21,y21);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21,y21-10);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-40);
+   glVertex2i(x21+10,y21-40);
+   glVertex2i(x21+10,y21-20);
+   glVertex2i(x21,y21-20);
+ glEnd();
+
+ /*glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x2-2,y2-40);
+   glVertex2i(x2,y2-140);
+   glVertex2i(x2,y2-30);
+   glVertex2i(x2-2,y2-30);
+ glEnd();*/
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21,y21+5);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21+12,y21+30);
+   glVertex2i(x21+3,y21+30);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+30);
+   glVertex2i(x21+10,y21+30);
+   glVertex2i(x21+10,y21+34);
+   glVertex2i(x21-4,y21+34);
+ glEnd();
+
+
+  glColor3f(1.0f,0.3f,0.5f); //face
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+5);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+3,y21+32);
+   glVertex2i(x21-4,y21+32);
+ glEnd();
+ glPopMatrix();
+/*---------------------------------------------------------man4-----------------------------------*/
+ glPopMatrix();
+
+	glPushMatrix();
+	glTranslated (-25,0,0);
+    glColor3f(1.0f,0.0f,0.0f); //leg
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-90);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21,y21-60);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //shorts
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-60);
+   glVertex2i(x21+10,y21-60);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21-10,y21-30);
+ glEnd();
+  glColor3f(1.5f,0.5f,0.0f);    //shoe
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-100);
+   glVertex2i(x21+10,y21-100);
+   glVertex2i(x21+10,y21-90);
+   glVertex2i(x21-10,y21-90);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21-10,y21-10);
+ glEnd();
+
+ glColor3f(0.0f,0.3f,0.5f); //body
+  glBegin(GL_QUADS);
+   glVertex2i(x21-10,y21-10);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21,y21);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-30);
+   glVertex2i(x21+10,y21-30);
+   glVertex2i(x21+10,y21-10);
+   glVertex2i(x21,y21-10);
+ glEnd();
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21-40);
+   glVertex2i(x21+10,y21-40);
+   glVertex2i(x21+10,y21-20);
+   glVertex2i(x21,y21-20);
+ glEnd();
+
+ /*glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x2-2,y2-40);
+   glVertex2i(x2,y2-140);
+   glVertex2i(x2,y2-30);
+   glVertex2i(x2-2,y2-30);
+ glEnd();*/
+
+ glColor3f(1.0f,0.3f,0.5f); //hand
+  glBegin(GL_QUADS);
+   glVertex2i(x21,y21);
+   glVertex2i(x21+10,y21);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21,y21+5);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+10,y21+5);
+   glVertex2i(x21+12,y21+30);
+   glVertex2i(x21+3,y21+30);
+ glEnd();
+
+ glColor3f(0.0f,0.0f,0.0f); //head hair
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+30);
+   glVertex2i(x21+10,y21+30);
+   glVertex2i(x21+10,y21+34);
+   glVertex2i(x21-4,y21+34);
+ glEnd();
+
+
+  glColor3f(1.0f,0.3f,0.5f); //face
+  glBegin(GL_QUADS);
+   glVertex2i(x21-4,y21+5);
+   glVertex2i(x21+3,y21+5);
+   glVertex2i(x21+3,y21+32);
+   glVertex2i(x21-4,y21+32);
+ glEnd();
+ glPopMatrix();
 drawText( 20,460,"Kannada Rajyothsava Flag Hoisiting");
 glutKeyboardFunc(keyboard);
 glutSwapBuffers();
@@ -834,5 +1245,9 @@ void keyboard(unsigned char key,int x,int y)
       else
         aniflag=0;
     }
+    if(key == 'd')
+        day = 1;
+    if(key == 'n')
+        day = 0;
 
 }
