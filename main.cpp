@@ -12,7 +12,7 @@ static int aniflag=0;
 GLint day=1;
 void drawText(float x,float y,char *string)
 {
- glColor3f(0,0,0);
+ glColor3f(1,1,1);
 char *c;
 glRasterPos2f(x,y);
 for (c=string;*c != '\0'; c++)
