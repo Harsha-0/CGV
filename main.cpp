@@ -17,7 +17,7 @@ char *c;
 glRasterPos2f(x,y);
 for (c=string;*c != '\0'; c++)
 {
-	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+    glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
 }
 }
 
@@ -26,8 +26,12 @@ void menu (int n){
     aniflag =1;
  else if(n==2)
     aniflag =0;
- else
+ else if(n==0)
     exit(0);
+    if (n==3)
+        day=1;
+  if(n==4)
+        day=0;
 
  glutPostRedisplay();
 
@@ -43,6 +47,8 @@ void Myinit(){
  glutCreateMenu(menu);
  glutAddMenuEntry("Start",1);
  glutAddMenuEntry("Stop",2);
+    glutAddMenuEntry("day",3);
+    glutAddMenuEntry("night",4);
   glutAddMenuEntry("exit",0);
   glutAttachMenu(GLUT_RIGHT_BUTTON);
   glutPostRedisplay();
@@ -72,9 +78,16 @@ void Man(){
 
 glClear(GL_COLOR_BUFFER_BIT);
 
-
+    
     glBegin(GL_QUADS); // Each set of 4 vertices form a quad
-
+    //night
+    if(day==0){
+    glColor3f(0,0,0);
+    glVertex2f(0,500);
+    glVertex2f(0,300);
+    glVertex2f(500,300);
+    glVertex2f(500,500);
+    }
     //background-light brown
     glColor3f(0.7,0.4,0.2) ; // light brown background1
     glVertex2f(0,440);
@@ -272,7 +285,34 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(355, 270);     //  so that the normal (front-face) is facing you
     glVertex2f(375, 270);
     glVertex2f(375, 230);
+    
+    //------treessssss
+           glBegin(GL_TRIANGLES);
+            //tree3
+            glColor3f(0.6,0.8,0.196078);
+            glVertex2f(400,250);
+            glVertex2f(420,370);
+            glVertex2f(440,250);
+            glEnd();
+    
+            
+            glBegin(GL_TRIANGLES);
+            //tree4
+            glColor3f(0.6,0.8,0.196078);
+            glVertex2f(430,220);
+            glVertex2f(450,340);
+            glVertex2f(470,220);
+            glEnd();
+            glBegin(GL_TRIANGLES);
+            //tree5
+            glColor3f(0.6,0.8,0.196078);
+            glVertex2f(390,190);
+            glVertex2f(410,300);
+            glVertex2f(430,190);
+            glEnd();
+        
     //pillar1
+    glBegin(GL_QUADS);
     glColor3f(0.6, 0.2, 0.0); // brown and the base for the buildings
     glVertex2f(70,200);
     glVertex2f(70,400);
@@ -380,11 +420,6 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(424,115);
     glVertex2f(436,75);//RB
 
-    glColor3f(0.7, 0.3, 0.1); // brown
-    glVertex2f(230, 220);     // Define vertices in counter-clockwise (CCW) order
-    glVertex2f(230, 280);     //  so that the normal (front-face) is facing you
-    glVertex2f(260, 280);
-    glVertex2f(260, 220);
 
    glEnd();
 
@@ -395,6 +430,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(30,180);
     glVertex2f(45,300);
     glVertex2f(60,180);
+
     //tree2
     glColor3f(0.6,0.8,0.196078);
     glVertex2f(10,250);
@@ -416,7 +452,13 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(160,350);
     glVertex2f(330,350);
     glVertex2f(245,400);
-   glEnd();
+   
+    // triangle inside triangle
+    glColor3f(0.8,0.5,0.1); // brown triangle
+    glVertex2f(182,358);
+    glVertex2f(245,393);//middle
+    glVertex2f(308,358);
+    glEnd();
 
 
  /*------------------------------------------FLAGbase------------------------------------------------*/
@@ -585,8 +627,8 @@ glEnd();
  /*--------------------------------------------man3--------------------------------------------*/
   glPopMatrix();
 
-	glPushMatrix();
-	glTranslated (15,80,0);
+    glPushMatrix();
+    glTranslated (15,80,0);
     glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x21,y21-90);
@@ -687,8 +729,8 @@ glEnd();
  /*--------------------------------------------man3--------------------------------------------*/
   glPopMatrix();
 
-	glPushMatrix();
-	glTranslated (80,80,0);
+    glPushMatrix();
+    glTranslated (80,80,0);
     glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x21,y21-90);
@@ -983,8 +1025,8 @@ glEnd();
   /*--------------------------------------------man3--------------------------------------------*/
   glPopMatrix();
 
-	glPushMatrix();
-	glTranslated (115,0,0);
+    glPushMatrix();
+    glTranslated (115,0,0);
     glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x21,y21-90);
@@ -1084,8 +1126,8 @@ glEnd();
 /*---------------------------------------------------------man4-----------------------------------*/
  glPopMatrix();
 
-	glPushMatrix();
-	glTranslated (-25,0,0);
+    glPushMatrix();
+    glTranslated (-25,0,0);
     glColor3f(1.0f,0.0f,0.0f); //leg
   glBegin(GL_QUADS);
    glVertex2i(x21,y21-90);
