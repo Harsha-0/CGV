@@ -82,7 +82,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_QUADS); // Each set of 4 vertices form a quad
     //night
     if(day==0){
-    glColor3f(0,0,0);
+     glColor3f(0,0.2,0.5);
     glVertex2f(0,500);
     glVertex2f(0,300);
     glVertex2f(500,300);
