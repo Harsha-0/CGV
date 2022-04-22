@@ -178,7 +178,7 @@ glClear(GL_COLOR_BUFFER_BIT);
     glVertex2f(490,290);
     glVertex2f(490,450);
 
-    glColor3f(0.7,0.4,0.2) ; // light brown background16
+    glColor3f(0.7,0.4,0.2) ; // light brown backgroundcolor16
     glVertex2f(490,445);
     glVertex2f(490,290);
     glVertex2f(500,290);
